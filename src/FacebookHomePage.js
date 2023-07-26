@@ -24,7 +24,6 @@ import {
 import { useState } from 'react';
 import { Link, Element } from 'react-scroll';
 
-
 const { Header, Content, Sider } = Layout;
 const { TabPane } = Tabs;
 
@@ -215,9 +214,10 @@ const FacebookHomePage = () => {
               prefix={<SearchOutlined />}
               placeholder="Search Facebook"
               style={{ width: '100%' }}
+              className="search-component"
             />
           </Col>
-          <Col flex="500px">
+          <Col flex="auto">
             {/* Right-aligned Icons */}
             <Row justify="end" align="middle">
               <Col>
@@ -265,6 +265,7 @@ const FacebookHomePage = () => {
               height: 'calc(100vh - 64px)',
               background: '#fff',
             }}
+            className="left-sidebar"
           >
             <Menu mode="inline" defaultSelectedKeys={['1']}>
               <Menu.Item key="1" icon={<HomeOutlined />}>
@@ -288,10 +289,13 @@ const FacebookHomePage = () => {
         <Content
           style={{ padding: '24px', minHeight: '280px', overflowX: 'auto' }}
         >
-          <Tabs defaultActiveKey="1" style={{ marginBottom: '120px' }}>
+          <Tabs defaultActiveKey="1" className="custom-tabs">
             {/* Tab for Stories */}
             <TabPane tab="Stories" key="1">
-              <div style={{ display: 'flex', gap: '12px', overflowX: 'auto' }}>
+              <div
+                className="custom-stories"
+                style={{ display: 'flex', gap: '12px', overflowX: 'auto' }}
+              >
                 {storiesData.map((story) => (
                   <div
                     key={story.id}
@@ -311,7 +315,10 @@ const FacebookHomePage = () => {
             </TabPane>
             {/* Tab for Reels */}
             <TabPane tab="Reels" key="2">
-            <div style={{ display: 'flex', gap: '12px'}} className='custom-scrollbar-horizontal'>
+              <div
+                style={{ display: 'flex', gap: '12px' }}
+                className="custom-scrollbar-horizontal"
+              >
                 {/* <h3>Reels</h3> */}
                 <div style={{ display: 'flex', gap: '8px' }}>
                   {reelsData.map((reel) => (
@@ -337,8 +344,14 @@ const FacebookHomePage = () => {
             </TabPane>
           </Tabs>
           {/* News Feed */}
-          <div className = "custom-scrollbar" style={{ marginBottom: '16px', maxHeight: 'calc(100vh - 64px - 2 * 16px)' }}>
-            <h3>News Feed</h3>
+          <h3>News Feed</h3>
+          <div
+            className="custom-scrollbar"
+            style={{
+              marginBottom: '16px',
+              maxHeight: 'calc(100vh - 64px - 2 * 16px)',
+            }}
+          >
             {newsFeedData.map((newsItem) => (
               <Card key={newsItem.id}>
                 <Card.Meta
@@ -392,6 +405,7 @@ const FacebookHomePage = () => {
               height: 'calc(100vh - 64px)',
               background: '#fff',
             }}
+            className="right-sidebar"
           >
             <div style={{ padding: '16px', background: '#fff' }}>
               <h3>Friend Suggestions</h3>

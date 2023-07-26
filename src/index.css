@@ -70,3 +70,64 @@ code {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: #555; /* Color of the scrollbar thumb on hover */
 }
+
+/* Styles for medium screens (Tablet landscape and larger) */
+@media (min-width: 1024px) {
+  /* Add your CSS rules for medium screens here */
+  /* For example: */
+  .custom-tabs {
+    margin-bottom: 100px;
+  }
+}
+
+/* CSS for mobile responsiveness */
+@media (max-width: 767px) {
+  .ant-layout-header {
+    padding: 8px;
+  }
+  .search-component {
+    display: none;
+  }
+  .custom-stories {
+    height: 200px;
+  }
+  .custom-tabs {
+    margin-bottom: 5px;
+  }
+}
+
+/* CSS for tablet responsiveness */
+@media (min-width: 768px) and (max-width: 991px) {
+  .ant-layout-header {
+    padding: 12px;
+  }
+}
+
+/* CSS for mobile responsiveness */
+@media (max-width: 767px) {
+  .right-sidebar {
+    display: none;
+  }
+
+  .left-sidebar {
+    display: none;
+  }
+}
+
+/* CSS for tablet responsiveness */
+@media (min-width: 768px) and (max-width: 991px) {
+  .right-sidebar {
+    display: none;
+  }
+
+  .left-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+}
+
+
+
+
