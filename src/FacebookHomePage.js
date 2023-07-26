@@ -7,7 +7,6 @@ import {
   Col,
   Avatar,
   Input,
-  Button,
   Card,
   Divider,
   Tabs,
@@ -24,6 +23,7 @@ import {
 } from '@ant-design/icons';
 import { useState } from 'react';
 import { Link, Element } from 'react-scroll';
+
 
 const { Header, Content, Sider } = Layout;
 const { TabPane } = Tabs;
@@ -114,6 +114,22 @@ const FacebookHomePage = () => {
       },
       video: 'https://www.example.com/reel2.mp4',
     },
+    {
+      id: 5,
+      user: {
+        name: 'Emily Davis',
+        avatar: 'https://randomuser.me/api/portraits/women/4.jpg',
+      },
+      video: 'https://www.example.com/reel2.mp4',
+    },
+    {
+      id: 6,
+      user: {
+        name: 'Emily Davis',
+        avatar: 'https://randomuser.me/api/portraits/women/4.jpg',
+      },
+      video: 'https://www.example.com/reel2.mp4',
+    },
     // Add more dummy data here
   ];
   const rightSidebarData = {
@@ -186,11 +202,11 @@ const FacebookHomePage = () => {
   ];
   return (
     <Layout>
-      <Header>
+      <Header style={{ position: 'sticky', top: 0, zIndex: 1 }}>
         <Row align="middle">
           <Col flex="150px">
             <div className="logo">
-              <span style={{ fontSize: '24px', color: '#fff' }}>Facebook</span>
+              <span style={{ fontSize: '24px', color: '#fff' }}>Cbook</span>
             </div>
           </Col>
           <Col flex="auto" style={{ maxWidth: '400px' }}>
@@ -201,7 +217,7 @@ const FacebookHomePage = () => {
               style={{ width: '100%' }}
             />
           </Col>
-          <Col flex="1090px">
+          <Col flex="500px">
             {/* Right-aligned Icons */}
             <Row justify="end" align="middle">
               <Col>
@@ -272,8 +288,7 @@ const FacebookHomePage = () => {
         <Content
           style={{ padding: '24px', minHeight: '280px', overflowX: 'auto' }}
         >
-          <Tabs defaultActiveKey="1" style={{ marginBottom: '16px' }}>
-            {/* Tab for Stories */}
+          <Tabs defaultActiveKey="1" style={{ marginBottom: '120px' }}>
             {/* Tab for Stories */}
             <TabPane tab="Stories" key="1">
               <div style={{ display: 'flex', gap: '12px', overflowX: 'auto' }}>
@@ -296,32 +311,33 @@ const FacebookHomePage = () => {
             </TabPane>
             {/* Tab for Reels */}
             <TabPane tab="Reels" key="2">
-              <div
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '8px',
-                  overflowX: 'auto',
-                }}
-              >
-                {reelsData.map((reel) => (
-                  <video
-                    key={reel.id}
-                    src={reel.video}
-                    width="200"
-                    height="200"
-                    controls
-                  />
-                ))}
+            <div style={{ display: 'flex', gap: '12px'}} className='custom-scrollbar-horizontal'>
+                {/* <h3>Reels</h3> */}
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  {reelsData.map((reel) => (
+                    <div
+                      key={reel.id}
+                      style={{
+                        borderRadius: '8px',
+                        overflow: 'hidden',
+                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                      }}
+                    >
+                      <video
+                        src={reel.video}
+                        width="150"
+                        height="200"
+                        controls
+                        style={{ borderRadius: '8px', objectFit: 'cover' }}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </TabPane>
           </Tabs>
           {/* News Feed */}
-          <Element
-            name="news-feed"
-            className="element"
-            style={{ marginBottom: '16px' }}
-          >
+          <div className = "custom-scrollbar" style={{ marginBottom: '16px', maxHeight: 'calc(100vh - 64px - 2 * 16px)' }}>
             <h3>News Feed</h3>
             {newsFeedData.map((newsItem) => (
               <Card key={newsItem.id}>
@@ -341,7 +357,7 @@ const FacebookHomePage = () => {
                 />
               </Card>
             ))}
-          </Element>
+          </div>
           {/* Modal to display the story */}
           <Modal
             open={isModalVisible}
