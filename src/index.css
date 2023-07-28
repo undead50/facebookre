@@ -78,6 +78,9 @@ code {
   .custom-tabs {
     margin-bottom: 100px;
   }
+  .custom-modal {
+    max-width: 12%;
+  }
 }
 
 /* CSS for mobile responsiveness */
@@ -101,6 +104,11 @@ code {
   .ant-layout-header {
     padding: 12px;
   }
+
+  .custom-modal {
+    max-width: 22%;
+
+  }
 }
 
 /* CSS for mobile responsiveness */
@@ -111,6 +119,13 @@ code {
 
   .left-sidebar {
     display: none;
+  }
+  .custom-modal {
+    max-width: 39%;
+  }
+  .custom-notification {
+    display: flex;
+    justify-content: center;
   }
 }
 

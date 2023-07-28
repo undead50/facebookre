@@ -1,11 +1,9 @@
 import React from 'react';
-import FacebookHomePage from './FacebookHomePage';
+import MyRoutes from './routes';
 
 function App() {
   return (
-    <div>
-      <FacebookHomePage />
-    </div>
+    <MyRoutes/>
   );
 }
 

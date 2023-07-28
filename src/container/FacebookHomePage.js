@@ -12,17 +12,13 @@ import {
   Tabs,
   Modal,
 } from 'antd';
-import {
-  HomeOutlined,
-  UserOutlined,
-  PlayCircleOutlined,
-  MessageOutlined,
-  BellOutlined,
-  SearchOutlined,
-  MailOutlined,
-} from '@ant-design/icons';
+
 import { useState } from 'react';
 import { Link, Element } from 'react-scroll';
+import CustomHeader from '../components/Header';
+import SideBarLeft from '../components/SideBarLeft';
+import SideBarRight from '../components/SideBarRight';
+import { Outlet } from "react-router-dom";
 
 const { Header, Content, Sider } = Layout;
 const { TabPane } = Tabs;
@@ -87,7 +83,7 @@ const FacebookHomePage = () => {
         name: 'Michael Johnson',
         avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
       },
-      video: 'https://www.example.com/reel1.mp4',
+      video: 'https://www.youtube.com/watch?v=lBDj9yW0ziQ',
     },
     {
       id: 2,
@@ -131,123 +127,11 @@ const FacebookHomePage = () => {
     },
     // Add more dummy data here
   ];
-  const rightSidebarData = {
-    friendSuggestions: [
-      {
-        id: 1,
-        name: 'Kate Johnson',
-        avatar: 'https://randomuser.me/api/portraits/women/3.jpg',
-      },
-      {
-        id: 2,
-        name: 'Michael Smith',
-        avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
-      },
-      {
-        id: 3,
-        name: 'Emily Davis',
-        avatar: 'https://randomuser.me/api/portraits/women/5.jpg',
-      },
-    ],
-    trendingTopics: [
-      { id: 1, topic: 'Technology' },
-      { id: 2, topic: 'Travel' },
-      { id: 3, topic: 'Food' },
-    ],
-  };
-  const newsFeedData = [
-    {
-      id: 1,
-      user: {
-        name: 'John Doe',
-        avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
-      },
-      image: 'https://via.placeholder.com/400',
-      title: 'Exciting News 1',
-      description:
-        'This is an exciting piece of news. Stay tuned for more updates!',
-    },
-    {
-      id: 2,
-      user: {
-        name: 'Jane Smith',
-        avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
-      },
-      image: 'https://via.placeholder.com/400',
-      title: 'Breaking News 2',
-      description: 'Breaking news just in! Check out the latest updates.',
-    },
-    {
-      id: 3,
-      user: {
-        name: 'Jane Smith',
-        avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
-      },
-      image: 'https://via.placeholder.com/400',
-      title: 'Breaking News 2',
-      description: 'Breaking news just in! Check out the latest updates.',
-    },
-    {
-      id: 4,
-      user: {
-        name: 'Jane Smith',
-        avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
-      },
-      image: 'https://via.placeholder.com/400',
-      title: 'Breaking News 2',
-      description: 'Breaking news just in! Check out the latest updates.',
-    },
-    // Add more dummy data here
-  ];
+
+
   return (
     <Layout>
-      <Header style={{ position: 'sticky', top: 0, zIndex: 1 }}>
-        <Row align="middle">
-          <Col flex="150px">
-            <div className="logo">
-              <span style={{ fontSize: '24px', color: '#fff' }}>Cbook</span>
-            </div>
-          </Col>
-          <Col flex="auto" style={{ maxWidth: '400px' }}>
-            {/* Adjusted Search Bar Width */}
-            <Input
-              prefix={<SearchOutlined />}
-              placeholder="Search Facebook"
-              style={{ width: '100%' }}
-              className="search-component"
-            />
-          </Col>
-          <Col flex="auto">
-            {/* Right-aligned Icons */}
-            <Row justify="end" align="middle">
-              <Col>
-                {/* Notification Icon */}
-                <Badge count={7}>
-                  <BellOutlined
-                    style={{
-                      fontSize: '24px',
-                      color: '#fff',
-                      marginLeft: '12px',
-                    }}
-                  />
-                </Badge>
-              </Col>
-              <Col>
-                {/* Message Icon */}
-                <Badge count={2}>
-                  <MailOutlined
-                    style={{
-                      fontSize: '24px',
-                      color: '#fff',
-                      marginLeft: '12px',
-                    }}
-                  />
-                </Badge>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Header>
+      <CustomHeader />
       <Layout>
         <Element
           name="left-sidebar"
@@ -258,33 +142,7 @@ const FacebookHomePage = () => {
             background: '#fff',
           }}
         >
-          <Sider
-            width={300}
-            style={{
-              overflowY: 'auto',
-              height: 'calc(100vh - 64px)',
-              background: '#fff',
-            }}
-            className="left-sidebar"
-          >
-            <Menu mode="inline" defaultSelectedKeys={['1']}>
-              <Menu.Item key="1" icon={<HomeOutlined />}>
-                Home
-              </Menu.Item>
-              <Menu.Item key="2" icon={<UserOutlined />}>
-                Friends
-              </Menu.Item>
-              <Menu.Item key="3" icon={<PlayCircleOutlined />}>
-                Videos
-              </Menu.Item>
-              <Menu.Item key="4" icon={<MessageOutlined />}>
-                Messages
-              </Menu.Item>
-              <Menu.Item key="5" icon={<BellOutlined />}>
-                Notifications
-              </Menu.Item>
-            </Menu>
-          </Sider>
+          <SideBarLeft />
         </Element>
         <Content
           style={{ padding: '24px', minHeight: '280px', overflowX: 'auto' }}
@@ -352,24 +210,9 @@ const FacebookHomePage = () => {
               maxHeight: 'calc(100vh - 64px - 2 * 16px)',
             }}
           >
-            {newsFeedData.map((newsItem) => (
-              <Card key={newsItem.id}>
-                <Card.Meta
-                  avatar={<Avatar src={newsItem.user.avatar} />}
-                  title={newsItem.title}
-                  description={newsItem.description}
-                />
-                <img
-                  src={newsItem.image}
-                  alt="News"
-                  style={{
-                    width: '100%',
-                    maxHeight: '300px',
-                    objectFit: 'cover',
-                  }}
-                />
-              </Card>
-            ))}
+            <Outlet />
+
+
           </div>
           {/* Modal to display the story */}
           <Modal
@@ -377,6 +220,7 @@ const FacebookHomePage = () => {
             title={selectedStory && selectedStory.user.name}
             onCancel={handleModalClose}
             footer={null}
+            className='custom-modal'
           >
             {selectedStory && (
               <div>
@@ -398,36 +242,7 @@ const FacebookHomePage = () => {
             background: '#fff',
           }}
         >
-          <Sider
-            width={300}
-            style={{
-              overflowY: 'auto',
-              height: 'calc(100vh - 64px)',
-              background: '#fff',
-            }}
-            className="right-sidebar"
-          >
-            <div style={{ padding: '16px', background: '#fff' }}>
-              <h3>Friend Suggestions</h3>
-              {rightSidebarData.friendSuggestions.map((friend) => (
-                <div key={friend.id} style={{ marginBottom: '8px' }}>
-                  <Avatar
-                    src={friend.avatar}
-                    size={40}
-                    style={{ marginRight: '8px' }}
-                  />
-                  <span>{friend.name}</span>
-                </div>
-              ))}
-              <Divider />
-              <h3>Trending Topics</h3>
-              {rightSidebarData.trendingTopics.map((topic) => (
-                <div key={topic.id} style={{ marginBottom: '8px' }}>
-                  <span>#{topic.topic}</span>
-                </div>
-              ))}
-            </div>
-          </Sider>
+          <SideBarRight />
         </Element>
       </Layout>
     </Layout>
