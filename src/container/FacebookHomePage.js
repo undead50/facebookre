@@ -1,24 +1,13 @@
 import React from 'react';
-import {
-  Layout,
-  Menu,
-  Row,
-  Badge,
-  Col,
-  Avatar,
-  Input,
-  Card,
-  Divider,
-  Tabs,
-  Modal,
-} from 'antd';
+import { Layout, Avatar, Tabs, Modal } from 'antd';
+import Footer from '../components/Footer';
 
 import { useState } from 'react';
 import { Link, Element } from 'react-scroll';
 import CustomHeader from '../components/Header';
 import SideBarLeft from '../components/SideBarLeft';
 import SideBarRight from '../components/SideBarRight';
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
 const { Header, Content, Sider } = Layout;
 const { TabPane } = Tabs;
@@ -83,7 +72,8 @@ const FacebookHomePage = () => {
         name: 'Michael Johnson',
         avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
       },
-      video: 'https://www.youtube.com/watch?v=lBDj9yW0ziQ',
+      video:
+        'https://www.f5.com/content/dam/f5-labs-v2/media-files/video/Happy%20Cow.mp4',
     },
     {
       id: 2,
@@ -127,7 +117,6 @@ const FacebookHomePage = () => {
     },
     // Add more dummy data here
   ];
-
 
   return (
     <Layout>
@@ -203,16 +192,8 @@ const FacebookHomePage = () => {
           </Tabs>
           {/* News Feed */}
           <h3>News Feed</h3>
-          <div
-            className="custom-scrollbar"
-            style={{
-              marginBottom: '16px',
-              maxHeight: 'calc(100vh - 64px - 2 * 16px)',
-            }}
-          >
+          <div className="custom-scrollbar">
             <Outlet />
-
-
           </div>
           {/* Modal to display the story */}
           <Modal
@@ -220,7 +201,7 @@ const FacebookHomePage = () => {
             title={selectedStory && selectedStory.user.name}
             onCancel={handleModalClose}
             footer={null}
-            className='custom-modal'
+            className="custom-modal"
           >
             {selectedStory && (
               <div>
@@ -245,6 +226,7 @@ const FacebookHomePage = () => {
           <SideBarRight />
         </Element>
       </Layout>
+      <Footer />
     </Layout>
   );
 };

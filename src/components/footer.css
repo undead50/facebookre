@@ -1,0 +1,7 @@
+
+/* CSS for mobile responsiveness */
+@media (max-width: 767px) {
+  .custom-mobile-footer {
+    display: block !important;
+  }
+}
